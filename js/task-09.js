@@ -1,14 +1,17 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-
 const button = document.querySelector(".change-color");
-button.addEventListener("click", onClickChangeColor.bind(getRandomHexColor));
-
 const spanColor = document.querySelector(".color");
+let hexCode = "";
+
+button.addEventListener("click", onClickChangeColor);
 
 function onClickChangeColor() {
-  spanColor.style.backgroundColor = getRandomHexColor();
+  document.body.style.backgroundColor = getRandomHexColor();
+  spanColor.textContent = hexCode;
+}
+
+function getRandomHexColor() {
+  hexCode = `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+  return hexCode;
 }
